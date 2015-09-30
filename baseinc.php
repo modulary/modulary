@@ -2,8 +2,13 @@
 // baseinc.php - The loader of the most basic parts of the modulary
 // system:
 
+// We want to have sessions running before anything else happens:
+session_start();
+
+
 // Let us define the root directory of everything:
 define('MDLR_ROOT',__DIR__);
+define('MDLR_CNFERR',__DIR__ . '/cnferr');
 
 
 // First, we create the object that modulary will use as it's common

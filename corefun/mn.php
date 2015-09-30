@@ -17,6 +17,10 @@ if ( !defined('MDLR_ROOT') ) { exit; }
 // script after all the configurational initiations.
 require_once(__DIR__ . "/f_mdlr_action.php");
 
+// The mdlr_basefile() function simply echoes the filename
+// of the launch file.
+require_once(__DIR__ . "/f_mdlr_basefile.php");
+
 // This function will run a code-segment -- that is, one of those
 // PHP files in the 'codesegs' directory.
 require_once(__DIR__ . "/f_mdlr_cseg.php");
