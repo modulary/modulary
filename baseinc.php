@@ -7,8 +7,8 @@ session_start();
 
 
 // Let us define the root directory of everything:
-define('MDLR_ROOT',__DIR__);
-define('MDLR_CNFERR',__DIR__ . '/cnferr');
+define('MDLR_ROOT',realpath(__DIR__));
+define('MDLR_CNFERR',MDLR_ROOT . '/cnferr');
 
 
 // First, we create the object that modulary will use as it's common
@@ -23,7 +23,7 @@ $mdlr_anchr->param = new stdClass;
 
 
 // Now we load the core-essential function:
-require(__DIR__ . "/corefun/mn.php");
+require(MDLR_ROOT . "/corefun/mn.php");
 
 
 ?>

@@ -9,7 +9,7 @@ $prams = $GLOBALS["mdlr_anchr"]->param;
 
 // If the login prefix has not been set, explain that much and
 // exit.
-if ( !($prams->ssnp_login) )
+if ( !isset($prams->ssnp_login) )
 {
   require MDLR_CNFERR . '/no-session-login-prefix.php';
   return false;
