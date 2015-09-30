@@ -12,14 +12,17 @@ $prams = $GLOBALS["mdlr_anchr"]->param;
 if ( !isset($prams->ssnp_login) )
 {
   require MDLR_CNFERR . '/no-session-login-prefix.php';
-  return false;
+  exit(2);
 }
 
 // Obtain the prefix of login info in the session:
 $lgprfx = $prams->ssnp_login;
 
 // Return FALSE if not logged on:
+if ( !isset($_SESSION[$lgprfx . "on"]) ) { return false; }
 if ( !($_SESSION[$lgprfx . "on"]) ) { return false; }
+if ( !isset($_SESSION[$lgprfx . "euid"]) ) { return false; }
+if ( !isset($_SESSION[$lgprfx . "ruid"]) ) { return false; }
 
 
 // Set up user-info:
