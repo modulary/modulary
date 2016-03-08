@@ -1,0 +1,50 @@
+<html><body>
+
+<p>The following are the purposes for various code segments. Each code-segment
+is a PHP file called from within a function, located in this directory, who's
+filename is the prefix "cs-" followed by the name of the code-segment followed
+by ".php".</p>
+
+<p>
+The return value of the script will be returned by the calling function as well.
+</p>
+
+<p>
+The code-segments are called in <em>require</em> mode so that there will (if the server is so-configured) be error-output in the event of a missing file.
+</p>
+
+<p>
+The <b>$codeparam</b> local-variable is where the identifier of the code-segment is stored.
+</p>
+
+<table border = "1" cellpadding = "3">
+
+
+<tr><td>act_as_logged_on</td>
+<td>tbi</td>
+<td>
+This code-segment will be called if and only if a user is presently logged
+on to the system.
+</td></tr>
+
+<tr><td>but_not_logged_on</td>
+<td>tbi</td>
+<td>
+This code-segment will be called <em>unless</em> a user is presently logged
+on to the system.
+</td></tr>
+
+<tr><td>is_logged_on</td>
+<td>ip</td>
+<td>
+This code-segment will return FALSE if no user is presently logged on to
+the system.
+However, if a user <em>is</em> presently logged on to the system, it
+will return TRUE after an object named 'userinf' is created in the
+anchor object with all relevant user information.
+</td></tr>
+
+
+</table>
+
+</body></html>
