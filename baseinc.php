@@ -4,6 +4,7 @@
 
 // We want to have sessions running before anything else happens:
 session_start();
+session_regenerate_id(true); // We are doing this in a *secure* manner!! (See PHP docs)
 
 
 // Let us define the root directory of everything:
