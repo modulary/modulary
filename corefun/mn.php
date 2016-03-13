@@ -15,14 +15,26 @@ if ( !defined('MDLR_ROOT') ) { exit; }
 
 // The mdlr_action() function is the function called by the launch
 // script after all the configurational initiations.
-require_once(__DIR__ . "/f_mdlr_action.php");
+require_once(realpath(__DIR__ . "/f_mdlr_action.php"));
 
 // The mdlr_basefile() function simply echoes the filename
 // of the launch file.
-require_once(__DIR__ . "/f_mdlr_basefile.php");
+require_once(realpath(__DIR__ . "/f_mdlr_basefile.php"));
 
 // This function will run a code-segment -- that is, one of those
 // PHP files in the 'codesegs' directory.
-require_once(__DIR__ . "/f_mdlr_cseg.php");
+require_once(realpath(__DIR__ . "/f_mdlr_cseg.php"));
+
+
+// This function does a lot like what PHP's built-in include() does
+// -- except that it sets a largely-independent variable-space - by
+// virtue of being a function.
+//   Global access to $mdlr_anchr is auto-arranged by this function,
+// though, as any Modulary code must have access to it. 
+sub mdlr_isovar ( $isofl )
+{
+  global $mdlr_anchr;
+  return include($isofl);
+}
 
 ?>

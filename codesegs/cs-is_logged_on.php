@@ -18,24 +18,20 @@ if ( !isset($prams->ssnp_login) )
 // Obtain the prefix of login info in the session:
 $lgprfx = $prams->ssnp_login;
 
-// Return FALSE if not logged on:
-if ( !isset($_SESSION[$lgprfx . "on"]) ) { return false; }
-if ( !($_SESSION[$lgprfx . "on"]) ) { return false; }
-if ( !isset($_SESSION[$lgprfx . "euid"]) ) { return false; }
-if ( !isset($_SESSION[$lgprfx . "ruid"]) ) { return false; }
+// Make sure the login sub-session exists:
+$wearegood = array_key_exists($lgprfx,$_SESSION);
+if ( $wearegood ) { $wearegood = isset($_SESSION[$lgprfx]); }
+if ( $wearegood ) { $wearegood = is_array($_SESSION[$lgprfx]); }
+if ( !($wearegood) )
+{
+  return false;
+}
 
+if ( !isset($GLOBALS["mdlr_anchr"]->lgin_do) )
+{
+  require(realpath(__DIR__ . '/cls-lgin_do.php'));
+}
 
-// Set up user-info:
-$userinf = new stdClass;
-$userinf->euid= $_SESSION[$lgprfx . "euid"]; // Effective user-ID
-$userinf->ruid= $_SESSION[$lgprfx . "ruid"]; // Real user-ID
-
-
-// Attach the user-info to the anchor object:
-$GLOBALS["mdlr_anchr"]->userinf = $userinf;
-
-
-// Return success:
 return true;
 
 ?>
