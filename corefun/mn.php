@@ -31,7 +31,7 @@ require_once(realpath(__DIR__ . "/f_mdlr_cseg.php"));
 // virtue of being a function.
 //   Global access to $mdlr_anchr is auto-arranged by this function,
 // though, as any Modulary code must have access to it. 
-sub mdlr_isovar ( $isofl )
+function mdlr_isovar ( $isofl )
 {
   global $mdlr_anchr;
   return include($isofl);
